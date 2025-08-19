@@ -1,0 +1,204 @@
+Metadata-Version: 2.4
+Name: ecg-daq
+Version: 1.0.0
+Summary: A high-performance, async-based real-time ECG monitoring system
+Home-page: https://github.com/ecgdaq/ecg-daq
+Author: ECG DAQ Team
+Author-email: support@ecgdaq.com
+Project-URL: Bug Reports, https://github.com/ecgdaq/ecg-daq/issues
+Project-URL: Source, https://github.com/ecgdaq/ecg-daq
+Project-URL: Documentation, https://ecgdaq.readthedocs.io/
+Keywords: ecg,daq,data-acquisition,medical,biomedical,real-time,async,uart,serial,monitoring
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Healthcare Industry
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Medical Science Apps.
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Topic :: System :: Hardware :: Hardware Drivers
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: pyserial>=3.5
+Requires-Dist: pyserial-asyncio>=0.6
+Requires-Dist: matplotlib>=3.5.0
+Requires-Dist: numpy>=1.21.0
+Requires-Dist: pydantic>=2.0.0
+Requires-Dist: rich>=13.0.0
+Requires-Dist: click>=8.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=6.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.18.0; extra == "dev"
+Requires-Dist: pytest-cov>=2.10; extra == "dev"
+Requires-Dist: black>=21.0; extra == "dev"
+Requires-Dist: isort>=5.0; extra == "dev"
+Requires-Dist: flake8>=3.8; extra == "dev"
+Requires-Dist: mypy>=0.800; extra == "dev"
+Requires-Dist: pre-commit>=2.15; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx>=4.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme>=1.0; extra == "docs"
+Requires-Dist: myst-parser>=0.15; extra == "docs"
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: project-url
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# ECG DAQ Real-time Monitor
+
+A high-performance, async-based real-time ECG monitoring system with UART data acquisition and real-time plotting.
+
+## Features
+
+- **Real-time ECG plotting** with 12-lead display
+- **Multiple CRC algorithms** for data integrity
+- **Async architecture** for optimal performance
+- **Modular design** with clear separation of concerns
+- **Professional ECG grid** with medical-grade formatting
+- **Configurable data acquisition** parameters
+
+## Project Structure
+
+```
+ecg_daq/
+├── src/
+│   ├── __init__.py
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── config.py          # Configuration management
+│   │   ├── models.py          # Data models and types
+│   │   └── exceptions.py      # Custom exceptions
+│   ├── protocols/
+│   │   ├── __init__.py
+│   │   ├── uart_protocol.py   # UART communication protocol
+│   │   └── crc.py            # CRC implementations
+│   ├── data_acquisition/
+│   │   ├── __init__.py
+│   │   ├── uart_receiver.py   # Async UART data receiver
+│   │   └── packet_parser.py   # Packet parsing and validation
+│   ├── visualization/
+│   │   ├── __init__.py
+│   │   ├── ecg_plotter.py     # Real-time ECG plotting
+│   │   └── plot_manager.py    # Plot lifecycle management
+│   └── utils/
+│       ├── __init__.py
+│       ├── async_utils.py     # Async utility functions
+│       └── cli.py            # Command-line interface
+├── tests/
+│   ├── __init__.py
+│   ├── test_crc.py
+│   ├── test_uart_protocol.py
+│   └── test_ecg_plotter.py
+├── examples/
+│   ├── demo_ecg.py
+│   └── real_time_monitor.py
+├── requirements.txt
+├── setup.py
+└── README.md
+```
+
+## Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd ecg_daq
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Install in development mode
+pip install -e .
+```
+
+## Usage
+
+### Basic Demo
+```bash
+python -m ecg_daq.examples.demo_ecg
+```
+
+### Real-time Monitoring
+```bash
+python -m ecg_daq.examples.real_time_monitor --port COM5 --plot
+```
+
+### Command Line Interface
+```bash
+# Test CRC methods
+python -m ecg_daq.utils.cli --test-crc
+
+# Run ECG demo
+python -m ecg_daq.utils.cli --demo
+
+# Real-time plotting from serial port
+python -m ecg_daq.utils.cli --port COM5 --plot --buffer-size 2000
+```
+
+## Configuration
+
+The system supports various configuration options:
+
+- **CRC Methods**: sum, maxim, ccitt, dallas, sae_j1850, rohc, crc16_*, crc32
+- **Buffer Sizes**: Configurable data buffers for different time windows
+- **Sample Rates**: Adjustable from 100Hz to 10kHz
+- **Plotting Modes**: Blocking and non-blocking modes
+
+## Architecture
+
+### Async Design
+- **Event-driven architecture** using asyncio
+- **Non-blocking I/O** for serial communication
+- **Separate event loops** for UI and data acquisition
+- **Efficient resource management** with async context managers
+
+### Data Flow
+1. **UART Receiver** → Async serial data acquisition
+2. **Packet Parser** → Protocol validation and CRC checking
+3. **Data Processor** → ECG signal processing and filtering
+4. **Plot Manager** → Real-time visualization updates
+5. **Event Loop** → Coordinated task management
+
+## Performance Features
+
+- **Zero-copy data handling** where possible
+- **Efficient buffer management** with deque-based circular buffers
+- **Async I/O** for non-blocking serial communication
+- **Optimized plotting** with matplotlib blitting
+- **Memory-efficient** data structures
+
+## Development
+
+### Running Tests
+```bash
+pytest tests/
+```
+
+### Code Quality
+```bash
+# Format code
+black src/
+isort src/
+
+# Lint code
+flake8 src/
+mypy src/
+```
+
+## License
+
+MIT License - see LICENSE file for details.
