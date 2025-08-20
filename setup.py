@@ -52,7 +52,7 @@ setup(
         "Documentation": "https://github.com/MT522/ecg-daq#readme",
         "Source Code": "https://github.com/MT522/ecg-daq",
     },
-    packages=find_packages(exclude=["tests", "tests.*", "examples", "test_data"]),
+    packages=find_packages(exclude=["tests", "tests.*", "test_data"]),
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Healthcare Industry",
@@ -92,9 +92,9 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "ecg-monitor=examples.real_time_monitor:main",
-            "ecg-plot=plot_ecg_data:main",
-            "ecg-mock-hardware=mock_daq_hardware:main",
+            "ecg-monitor=ecg_daq.examples.real_time_monitor:main",
+            "ecg-plot=ecg_daq.examples.plot_ecg_data:main",
+            "ecg-mock-hardware=ecg_daq.examples.mock_daq_hardware:main",
         ],
     },
     package_data={

@@ -13,22 +13,13 @@ include setup.cfg
 recursive-include docs *
 prune docs/_build
 
-# Include examples
-recursive-include examples *.py
-include examples/README.md
-
 # Include test data
 recursive-include test_data *.hea *.dat *.csv
 include test_data/README_TESTING.md
 
 # Include package data
-recursive-include ecg_daq *.py
+recursive-include ecg_daq *.py *.md
 include ecg_daq/py.typed
-
-# Include mock hardware and plotting utilities
-include mock_daq_hardware.py
-include plot_ecg_data.py
-include test_uart_with_mock.py
 
 # Exclude unwanted files
 global-exclude *.pyc

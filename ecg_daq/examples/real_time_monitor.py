@@ -7,12 +7,11 @@ import signal
 import sys
 from pathlib import Path
 
-# Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+# Imports are now relative since we're inside the package
 
-from ecg_daq.core.config import Config, CRCMethod
-from ecg_daq.core.exceptions import ECGDAQError
-from ecg_daq.data_acquisition.uart_receiver import AsyncUARTReceiver
+from ..core.config import Config, CRCMethod
+from ..core.exceptions import ECGDAQError
+from ..data_acquisition.uart_receiver import AsyncUARTReceiver
 import csv
 import json
 from datetime import datetime

@@ -7,10 +7,13 @@ __email__ = "mehrshad@example.com"
 # Core imports for easy access
 from .core.config import Config, ECGConfig, UARTConfig, ProtocolConfig
 from .core.models import Packet, Sample, ECGData, SystemStatus
-from .core.exceptions import ECGDAQError, PacketParseError, CRCError, ConfigError
+from .core.exceptions import ECGDAQError, PacketParseError, CRCError, ConfigurationError
 from .data_acquisition.uart_receiver import AsyncUARTReceiver
 from .data_acquisition.packet_parser import PacketParser
 from .protocols.crc import CRCMethod, validate_crc
+
+# Examples are available as submodule
+from . import examples
 
 __all__ = [
     # Version info
@@ -34,7 +37,7 @@ __all__ = [
     "ECGDAQError",
     "PacketParseError",
     "CRCError",
-    "ConfigError",
+    "ConfigurationError",
     
     # Core components
     "AsyncUARTReceiver",
@@ -43,4 +46,7 @@ __all__ = [
     # Protocol utilities
     "CRCMethod",
     "validate_crc",
+    
+    # Examples submodule
+    "examples",
 ]

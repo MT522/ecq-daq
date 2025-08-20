@@ -13,12 +13,11 @@ import subprocess
 import sys
 from pathlib import Path
 
-# Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent / "src"))
+# Imports are now relative since we're inside the package
 
 try:
-    from examples.real_time_monitor import RealTimeMonitor
-    from ecg_daq.core.config import Config, CRCMethod
+    from .real_time_monitor import RealTimeMonitor
+    from ..core.config import Config, CRCMethod
 except ImportError as e:
     print(f"Import error: {e}")
     print("Make sure you're running from the project root directory")
@@ -71,7 +70,7 @@ def test_mock_hardware():
     
     # Test waveform loading
     try:
-        from mock_daq_hardware import WaveformReader
+        from .mock_daq_hardware import WaveformReader
         
         waveform_path = "test_data/aami-ec13"
         if not Path(waveform_path).exists():
@@ -101,7 +100,7 @@ def run_mock_hardware(port: str, waveform: str = "aami3a"):
     import sys
     
     cmd = [
-        sys.executable, "mock_daq_hardware.py",
+        sys.executable, "-m", "ecg_daq.examples.mock_daq_hardware",
         "--port", port,
         "--waveform", waveform,
         "--sample-rate", "500",
