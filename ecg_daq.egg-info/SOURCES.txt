@@ -3,7 +3,6 @@ LICENSE
 MANIFEST.in
 README.md
 build_package.py
-daq_uart.py
 pyproject.toml
 requirements.txt
 setup.cfg

@@ -5,12 +5,12 @@ __author__ = "Mehrshad"
 __email__ = "mehrshad@example.com"
 
 # Core imports for easy access
-from .core.config import Config, ECGConfig, UARTConfig, ProtocolConfig
+from .core.config import Config, ECGConfig, UARTConfig, ProtocolConfig, CRCMethod
 from .core.models import Packet, Sample, ECGData, SystemStatus
 from .core.exceptions import ECGDAQError, PacketParseError, CRCError, ConfigurationError
 from .data_acquisition.uart_receiver import AsyncUARTReceiver
 from .data_acquisition.packet_parser import PacketParser
-from .protocols.crc import CRCMethod, validate_crc
+from .protocols.crc import validate_crc
 
 # Examples are available as submodule
 from . import examples
