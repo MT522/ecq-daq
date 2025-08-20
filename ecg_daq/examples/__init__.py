@@ -1,6 +1,6 @@
 """ECG DAQ Examples module."""
 
-from .real_time_monitor import RealTimeMonitor, main as monitor_main
+from .real_time_monitor import RealTimeMonitor, main as monitor_main, main_sync
 
 # Import main functions from other examples
 try:
@@ -21,6 +21,7 @@ except ImportError:
 __all__ = [
     "RealTimeMonitor", 
     "monitor_main", 
+    "main_sync",
     "plot_main", 
     "mock_main", 
     "test_main"

@@ -4,6 +4,7 @@
 pydantic>=1.10.0
 numpy>=1.20.0
 pyserial>=3.5
+pyserial-asyncio>=0.6
 asyncio-mqtt>=0.10.0
 
 # Signal processing

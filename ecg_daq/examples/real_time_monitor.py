@@ -326,7 +326,8 @@ async def main():
             await monitor.stop()
 
 
-if __name__ == "__main__":
+def main_sync():
+    """Synchronous wrapper for the main function (used by console script entry point)."""
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
@@ -334,3 +335,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"Program failed: {e}")
         sys.exit(1)
+
+
+if __name__ == "__main__":
+    main_sync()

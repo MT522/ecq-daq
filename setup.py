@@ -92,7 +92,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "ecg-monitor=ecg_daq.examples.real_time_monitor:main",
+            "ecg-monitor=ecg_daq.examples.real_time_monitor:main_sync",
             "ecg-plot=ecg_daq.examples.plot_ecg_data:main",
             "ecg-mock-hardware=ecg_daq.examples.test_uart_with_mock:main",
         ],

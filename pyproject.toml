@@ -74,7 +74,7 @@ Documentation = "https://github.com/mehrshad/ecg-daq#readme"
 "Source Code" = "https://github.com/mehrshad/ecg-daq"
 
 [project.scripts]
-ecg-monitor = "ecg_daq.examples.real_time_monitor:main"
+ecg-monitor = "ecg_daq.examples.real_time_monitor:main_sync"
 ecg-plot = "ecg_daq.examples.plot_ecg_data:main"
 ecg-mock-hardware = "ecg_daq.examples.test_uart_with_mock:main"
 
